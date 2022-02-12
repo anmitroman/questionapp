@@ -1,0 +1,25 @@
+<%= render "shared/errors", object: @quest %>
+
+<%= form_with model: @quest do |f| %>
+  <div class="mb-3 row">
+    <div class="col-sm-2 col-form-label">
+      <%= f.label :title %>
+    </div>
+    <div class="col-sm-10">
+      <%= f.text_field :title, class: 'form-control', 
+                        placeholder: "Title" %>
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <div class="col-sm-2 col-form-label">
+      <%= f.label :body %>
+    </div>
+    <div class="col-sm-10">
+      <%= f.text_area :body, class: 'form-control',
+                      placeholder: "Text" %>
+    </div>
+  </div>
+
+  <%= f.submit "Submit question"%>
+<% end %>

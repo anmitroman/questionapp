@@ -1,0 +1,7 @@
+<div>
+  <%= link_to "Show", quest_path(quest), class: 'btn btn-primary' %>  
+  <%= link_to "Edit", edit_quest_path(quest), class: 'btn btn-secondary'  %> 
+  <%= link_to "Delete", quest_path(quest), class: 'btn btn-danger', data: {
+                        turbo_method: :delete, 
+                        turbo_confirm: "Are you sure?" } %> 
+</div>

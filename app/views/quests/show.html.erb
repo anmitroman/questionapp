@@ -1,0 +1,43 @@
+<h1 class="mb-4"><%= @quest.title %></h1>
+
+<time datetime = <%= @quest.formatted_created_at %>>
+  <%= @quest.formatted_created_at %>
+</time>
+<p><%= @quest.body %></p>
+
+<%= render 'quests/buttons', quest: @quest %>
+
+<h3 class="my-4">Write your answer</h3>
+
+<%= render "shared/errors", object: @answer %>
+
+<%= form_with model: [@quest, @answer] do |f| %>
+  <div class="mb-3 row">
+    <div class="col-sm-2 col-form-label">
+      <%= f.label :body %>
+    </div>
+    <div class="col-sm-10">
+      <%= f.text_area :body, class: 'form-control',
+                      placeholder: "Text" %>
+    </div>
+  </div>
+
+  <%= f.submit "Submit answer", class: "btn btn-primary" %>
+<% end %>
+
+<h2 class='mt-4'>Answers</h2>
+
+<% @answers.each do |answer| %>
+  <article class="mb-3">
+  <time datetime = <%= answer.formatted_created_at %>>
+    <%= answer.formatted_created_at %>
+  </time>
+
+  <p><%= answer.body %></p>
+  <%= @quest.inspect %>
+  <%= answer.inspect %>
+  <%= link_to "Delete", quest_answer_path(@quest, answer), class: 'btn btn-danger', data: {
+                        turbo_method: :delete, 
+                        turbo_confirm: "Are you sure?" } %> 
+  </article>
+<% end %>
