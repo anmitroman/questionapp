@@ -21,6 +21,10 @@ class AnswersController < ApplicationController
     redirect_to quest_path(@quest), status: 303
   end
 
+  def edit
+    @answer = @quest.answers.find params[:id]
+  end
+
   private
 
   def set_quest!
