@@ -23,6 +23,7 @@ before_action :set_quest!, only: %i[edit update destroy show]
 
   def update
     if @quest.update quest_params
+      flash[:success] = "Answer updated!"
       redirect_to quests_path
     else
       render :edit
@@ -31,7 +32,7 @@ before_action :set_quest!, only: %i[edit update destroy show]
 
   def destroy
     @quest.destroy #if ????
-    flash[:success] = "Question deleted"
+    flash[:success] = "Question deleted!"
     redirect_to quests_path
   end
 

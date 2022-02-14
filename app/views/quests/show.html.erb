@@ -1,3 +1,5 @@
+<%= provide :page_title, @quest.title %>
+
 <h1 class="mb-4"><%= @quest.title %></h1>
 
 <time datetime = <%= @quest.formatted_created_at %>>
@@ -8,8 +10,6 @@
 <%= render 'quests/buttons', quest: @quest %>
 
 <h3 class="my-4">Write your answer</h3>
-
-<%= render "shared/errors", object: @answer %>
 
 <%= render "answers/form" %>
 
