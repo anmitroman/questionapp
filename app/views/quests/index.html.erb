@@ -3,6 +3,8 @@
 
 <h1 class="mb-4">Questions</h1>
 
+<%= paginate @quests %>
+
 <% @quests.each do |quest| %>
   <article class="card my-3">
     <div class="card-body">
@@ -22,3 +24,5 @@
     </div>  
   </article> 
 <% end %>
+
+<%= paginate @quests %>
