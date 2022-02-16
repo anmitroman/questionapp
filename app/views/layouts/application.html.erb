@@ -12,17 +12,7 @@
   </head>
 
   <body>
-    <header class='p-3 bg-dark text-white'>
-      <div class='container'>
-        <nav class='d-flex flex-wrap align-items-center justify-content-center'>
-          <ul class='nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center md-md-0'>
-            <li><%= link_to "Home", root_path, class: 'nav-link px-2 text-white' %></li>
-            <li><%= link_to "Questions", quests_path, class: 'nav-link px-2 text-white' %></li>
-            <li><%= link_to "Create question", new_quest_path, class: 'nav-link px-2 text-white' %></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+    <%= yield :main_menu %>
 
     <main class='container mt-3'>
       <% flash.each do |k, v| %>
