@@ -1,4 +1,6 @@
 class AnswersController < ApplicationController
+  include ActionView::RecordIdentifier
+  
   before_action :set_quest!
   before_action :set_answer!, except: :create
 
@@ -25,8 +27,9 @@ class AnswersController < ApplicationController
   def update
     if @answer.update answer_params
       flash[:success] = "Answer updated!"
-      # redirect_to quest_path(@quest, anchor: "answer-#{ @answer.id }")
-      redirect_to quest_path(@quest)
+      redirect_to quest_path(@quest, anchor: dom_id(@answer))
+      # redirect_to quest_path(@quest)
+      # сначала отправляется, а потом в урле чистится якорь, разобраться
     else
       render :edit
     end
