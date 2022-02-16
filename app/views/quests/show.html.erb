@@ -1,11 +1,14 @@
 <%= provide :page_title, @quest.title %>
+<% currently_at "Questions" %>
 
 <h1 class="mb-4"><%= @quest.title %></h1>
 
 <time datetime = <%= @quest.formatted_created_at %>>
   <%= @quest.formatted_created_at %>
 </time>
-<p><%= @quest.body %></p>
+<div class="lead my-3">
+  <%= sanitize @quest.body %>
+</div>
 
 <%= render 'quests/buttons', quest: @quest %>
 
@@ -15,16 +18,4 @@
 
 <h2 class='mt-4'>Answers</h2>
 
-<% @answers.each do |answer| %>
-  <article class="mb-3">
-  <time datetime = <%= answer.formatted_created_at %>>
-    <%= answer.formatted_created_at %>
-  </time>
-
-  <p><%= answer.body %></p>
-  <%= link_to "Edit", edit_quest_answer_path(@quest, answer), class: 'btn btn-info' %>
-  <%= link_to "Delete", quest_answer_path(@quest, answer), class: 'btn btn-danger', data: {
-                        turbo_method: :delete, 
-                        turbo_confirm: "Are you sure?" } %> 
-  </article>
-<% end %>
+<%= render @answers %>

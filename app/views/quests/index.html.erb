@@ -13,7 +13,9 @@
           <%= quest.formatted_created_at %>
         </time>
 
-        <p class="my-2"><%= quest.body %></p>
+        <p class="my-2">
+          <%= truncate strip_tags(quest.body), length: 150 %>
+        </p>
       </section>
 
       <%= render 'buttons', quest: quest %>
