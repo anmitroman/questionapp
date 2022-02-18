@@ -2,7 +2,7 @@ class QuestsController < ApplicationController
 before_action :set_quest!, only: %i[edit update destroy show]
   
   def index
-    @quests = Quest.order(created_at: :desc).page params[:page]
+    @quests = Quest.order(created_at: :desc).page(params[:page]).decorate
   end
 
   def new
@@ -38,12 +38,13 @@ before_action :set_quest!, only: %i[edit update destroy show]
 
   def show
     @answer = @quest.answers.build
-    @answers = @quest.answers.order(created_at: :desc).page params[:page]
+    @answers = @quest.answers.order(created_at: :desc).page(params[:page])
+    @answers = @answers.decorate
   end
 
   private
   def set_quest!
-    @quest = Quest.find params[:id]
+    @quest = Quest.find(params[:id]).decorate
   end
 
   def quest_params
