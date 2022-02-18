@@ -1,24 +1,34 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Question application:
+create questions for you friend.
 
-Things you may want to cover:
 
-* Ruby version
+* Installation:
 
-* System dependencies
+1) Clone respected git repository
 
-* Configuration
+2) Install all dependencies
+bundle i
 
-* Database creation
+3) Create db and migrate schema
+rake db:create
+rake db:migrate
 
-* Database initialization
+4) Make fake db data
+rails db:seeds
 
-* How to run the test suite
+5) Now run your application
+rails s
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+* Versions:
 
-* ...
+Ruby  3.0.0
+
+Rails 7.0.1
+
+Bootstrap 5.1.3
+
+
+
