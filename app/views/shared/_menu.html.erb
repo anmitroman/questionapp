@@ -13,8 +13,13 @@
 
         <ul class="nav col-12 col-lg-auto mb-2 md-md-0">
           <% if user_signed_in? %>
-            <li class="dropdown">
+            <li class="dropdown"> <!--  add dropdown -->
               <%= nav_tab current_user.name_or_email, '#', 
+                          class: 'nav-link px-2',
+                          current_page: current_page %>
+            </li>
+            <li>
+              <%= nav_tab 'Edit profile', edit_user_path(current_user), 
                           class: 'nav-link px-2',
                           current_page: current_page %>
             </li>

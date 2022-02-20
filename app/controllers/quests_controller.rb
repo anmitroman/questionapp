@@ -23,7 +23,7 @@ before_action :set_quest!, only: %i[edit update destroy show]
 
   def update
     if @quest.update quest_params
-      flash[:success] = "Answer updated!"
+      flash[:success] = "Question updated!"
       redirect_to quests_path
     else
       render :edit
