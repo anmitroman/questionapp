@@ -1,6 +1,6 @@
 <%= render "shared/errors", object: @user %>
 
-<%= form_with model: @user do |f| %>
+<%= form_with model: @user, data: { turbo: false } do |f| %>
   <div class="mb-3 row">
     <div class="col-sm-2 col-form-label">
       <%= f.label :name %>
@@ -20,6 +20,18 @@
                       placeholder: "E-mail" %>
     </div>
   </div>
+
+  <% unless @user.new_record? %>
+    <div class="mb-3 row">
+      <div class="col-sm-2 col-form-label">
+        <%= f.label :old_password %>
+      </div>
+      <div class="col-sm-10">
+        <%= f.password_field :old_password, class: 'form-control',
+                        placeholder: "Old password" %>
+      </div>
+    </div>
+  <% end %>
 
   <div class="mb-3 row">
     <div class="col-sm-2 col-form-label">
