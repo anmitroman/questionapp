@@ -8,15 +8,17 @@ class SessionsController < ApplicationController
     user = User.find_by email: params[:email]
     if user&.authenticate(params[:password])
       sign_in(user)
+      remember(user) if params[:remember_me] == '1'
       flash[:success] = "Welcome, #{current_user.name_or_email}!!!"
       redirect_to root_path
     else
       flash[:warning] = "Incorrect email and/or password"
-      redirect_to new_session_path
+      render :new
     end
   end
 
   def destroy
+    forget current_user
     sign_out
     flash[:success] = "Good bye!"
     redirect_to root_path
