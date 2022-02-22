@@ -12,7 +12,9 @@ class AnswersController < ApplicationController
       flash[:success] = 'Answer created'
       redirect_to quest_path(@quest)
     else
-      @answers = @quest.answers.order created_at: :desc
+      @quest = @quest.decorate
+      @answers = @quest.answers.order(created_at: :desc).page(params[:page])
+      @answers = @answers.decorate
       render 'quests/show'
     end
   end
