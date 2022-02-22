@@ -1,0 +1,15 @@
+# frozen_string_literal: true
+
+wb = xlsx_package.workbook
+s = wb.styles
+
+highlight_cell = s.add_style(bg_color: 'EFC376')
+date_cell = s.add_style(format_code: 'yyyy-mm-dd')
+
+wb.add_worksheet(name: 'User') do |sheet|
+  sheet.add_row ['ID', user.id], style: [nil, highlight_cell]
+  sheet.add_row ['Name', user.name]
+  sheet.add_row ['Email', user.email]
+  sheet.add_row ['Created at', user.created_at], style: [nil, date_cell]
+  sheet.add_row ['Updated at', user.updated_at], style: [nil, date_cell]
+end
