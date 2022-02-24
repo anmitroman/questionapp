@@ -14,7 +14,7 @@ class QuestsController < ApplicationController
   def create
     @quest = Quest.new quest_params
     if @quest.save
-      flash[:success] = 'Question created'
+      flash[:success] = t '.success'
       redirect_to quests_path
     else
       render :new
@@ -25,7 +25,7 @@ class QuestsController < ApplicationController
 
   def update
     if @quest.update quest_params
-      flash[:success] = 'Question updated!'
+      flash[:success] = t '.success'
       redirect_to quests_path
     else
       render :edit
@@ -34,7 +34,7 @@ class QuestsController < ApplicationController
 
   def destroy
     @quest.destroy # if ????
-    flash[:success] = 'Question deleted!'
+    flash[:success] = t '.success'
     redirect_to quests_path
   end
 

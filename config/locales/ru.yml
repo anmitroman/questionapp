@@ -1,0 +1,21 @@
+ru:
+  en: Английский
+  ru: Русский
+  menu:
+    home: 'Главная'
+  pages:
+    index:
+      title: 'Добро пожаловать на сайт!'
+  activerecord:
+    attributes:
+      quest:
+        title: 'Заголовок'
+        body: 'Текст'
+  quests:
+    destroy:
+      success: 'Вопрос удален!'
+    update:
+      success: 'Вопрос обновлен!'
+    create:
+      success: 'Вопрос создан!' 
+             

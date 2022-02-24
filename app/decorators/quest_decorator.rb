@@ -4,6 +4,6 @@ class QuestDecorator < ApplicationDecorator
   delegate_all
 
   def formatted_created_at
-    created_at.strftime('%Y-%m-%d')
+    l created_at, format: :long
   end
 end
